@@ -1,12 +1,13 @@
 {
   "id": "powerControl",
   "name": "Power Control",
-  "description": "switch between power profiles on the widget",
+  "description": "Cycle between power profiles right on the bar",
   "version": "1.0.0",
-  "author": "Your Name",
-  "icon": "widgets",
+  "author": "aryas",
+  "icon": "bolt",
   "type": "widget",
   "component": "./MyWidget.qml",
   "settings": "./MySettings.qml",
-  "permissions": ["settings_read", "settings_write"]
+  "dependencies": ["powerprofilesctl"],
+  "permissions": ["process"]
 }

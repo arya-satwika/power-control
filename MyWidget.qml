@@ -9,10 +9,14 @@ import Quickshell.Io
 PluginComponent {
     id: root
 
-    property list<string> icons: ["eco", "balance", "bolt"]
-    property list<string> profiles: ["power-saver", "balanced", "performance"]
+    readonly property var icons: ({
+        "power-saver":  "eco",
+        "balanced"   :   "balance",
+        "performance":  "bolt"
+        })
+    readonly property list<string> profiles: ["power-saver", "balanced", "performance"]
     property string currentProfile: ""
-    property string currentIcon: "eco"
+    property string currentIcon: icons[currentProfile]
 
 
     Process {
@@ -49,13 +53,10 @@ PluginComponent {
     function cycleProfiles(){
         if (root.currentProfile == profiles[0]) {
             setbalanced.running=true
-            root.currentIcon = icons[1]
         }else if (root.currentProfile == profiles[1]) {
             setperformance.running=true
-            root.currentIcon = icons[2]
         }else if (root.currentProfile == profiles[2]) {
             seteco.running=true
-            root.currentIcon = icons[0]
         }else{
             ToastService.showError("shit dont work")
         }
@@ -63,28 +64,45 @@ PluginComponent {
     }
 
     verticalBarPill: Component {
-        DankIcon{
-            name: root.currentIcon
-            size: Theme.fontSizeLarge
-            MouseArea{
-                anchors.fill:parent
-                onClicked: {
-                    root.cycleProfiles()
+        Column{
+            DankIcon{
+                name: root.currentIcon
+                size: Theme.fontSizeXLarge
+                color: Theme.secondary
+                implicitHeight: Theme.fontSizeXLarge
+                filled: true
+                MouseArea{
+                    cursorShape: Qt.PointingHandCursor
+                    anchors.fill:parent
+                    onClicked: {
+                        root.cycleProfiles()
+                    }
+                    hoverEnabled: true
+                    preventStealing: true
                 }
             }
+
         }
     }
     horizontalBarPill: Component {
-        DankIcon{
-            name: root.currentIcon
-            size: Theme.fontSizeLarge
-            MouseArea{
-                anchors.fill:parent
-                onClicked: {
-                    root.cycleProfiles()
-                    ToastService.showInfo("Changed to" + root.currentProfile)
+        Row{
+            DankIcon{
+                name: root.currentIcon
+                size: Theme.fontSizeXLarge
+                implicitHeight: Theme.fontSizeXLarge
+                color: Theme.secondary
+                filled: true
+                MouseArea{
+                    cursorShape: Qt.PointingHandCursor
+                    anchors.fill:parent
+                    onClicked: {
+                        root.cycleProfiles()
+                    }
+                    hoverEnabled: true
+                    preventStealing: true
                 }
             }
+
         }
     }
 
