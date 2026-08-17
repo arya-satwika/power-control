@@ -1,0 +1,12 @@
+{
+  "id": "powerControl",
+  "name": "Power Control",
+  "description": "switch between power profiles on the widget",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "icon": "widgets",
+  "type": "widget",
+  "component": "./MyWidget.qml",
+  "settings": "./MySettings.qml",
+  "permissions": ["settings_read", "settings_write"]
+}

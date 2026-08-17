@@ -1,0 +1,12 @@
+{
+    "emeraldwalk.runonsave": {
+        "commands": 
+        [
+            {
+                // Run whenever any file is saved
+                "match": ".qml",
+                "cmd": "dms ipc call plugins reload powerControl",
+            }
+        ]
+    }
+}
