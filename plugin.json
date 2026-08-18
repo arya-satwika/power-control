@@ -6,8 +6,8 @@
   "author": "aryas",
   "icon": "bolt",
   "type": "widget",
-  "component": "./MyWidget.qml",
-  "settings": "./MySettings.qml",
+  "component": "./BarWidget.qml",
+  "settings": "./Settings.qml",
   "dependencies": ["powerprofilesctl"],
   "permissions": ["process"]
 }
